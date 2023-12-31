@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <style>
+    body {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+#search-container {
+    text-align: center;
+    margin-top: 50px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+#search-form {
+    margin-top: 20px;
+}
+
+#search-input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#search-button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background-color: #39C5BB;
+}
+
+#search-results {
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+</head>
+<body>
+
+    <div id="search-container">
+        <h1>搜索页</h1>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="">
+            <button type="button" id="search-button" onclick="performSearch()">搜索</button>
+        </form>
+        <div id="search-results"></div>
+    </div>
+
+    <script>
+        function performSearch() {
+            // 获取搜索词
+            var searchTerm = document.getElementById('search-input').value;
+
+            // 模拟搜索过程（这里可以替换为实际的搜索逻辑）
+            var searchResults = simulateSearch(searchTerm);
+
+            // 显示搜索结果
+            displaySearchResults(searchResults);
+        }
+
+        function simulateSearch(searchTerm) {
+            // 这里可以替换为实际的搜索逻辑，比如通过Ajax请求后端API进行搜索
+            // 这里简单地返回一个模拟的搜索结果数组
+            var results = [
+                "Result 1 for " + searchTerm,
+                "Result 2 for " + searchTerm,
+                "Result 3 for " + searchTerm
+            ];
+            return results;
+        }
+
+        function displaySearchResults(results) {
+            var resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // 清空之前的结果
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = 'No results found.';
+            } else {
+                var ul = document.createElement('ul');
+                results.forEach(function(result) {
+                    var li = document.createElement('li');
+                    li.textContent = result;
+                    ul.appendChild(li);
+                });
+                resultsContainer.appendChild(ul);
+            }
+        }
+    </script>
+
+</body>
+</html>
