@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        LCHH2007
+    </title>
+    <style>
+        body {
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+#navigation-container {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 800px; /* 增加容器宽度以容纳四列 */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+#site-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: space-between; /* 使列之间的间隔相等 */
+}
+
+.site-item {
+    flex-basis: calc(25% - 10px); /* 设置每列的宽度，考虑到间隔 */
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.site-item:hover {
+    background-color: #f0f0f0;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style> 
+</head>
+<body>
+
+    <div id="navigation-container">
+        <h1>LCHH2007</h1>
+        <ul id="site-list">
+            <li class="site-item"><a href="https://z4a.net/images/2024/01/14/16.png">Wallpaper</a></li>
+            <!-- Add more site items as needed -->
+        </ul>
+    </div>
+
+</body>
+</html>
