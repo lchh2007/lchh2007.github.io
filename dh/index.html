@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网址导航</title>
-    <link rel="stylesheet" href="/assets/style.css">
+    <title>星辰导航</title>
+    <link rel="stylesheet" href="https://lchh2007.github.io/dh/assets/style.css">
 </head>
 <body>
 <!-- 顶部栏 -->
   <div class="topbar">
     <button class="menu-btn" onclick="toggleSidebar()">&#9776;</button>
     <a href="index.html">
-      <img src="/assets/logo.png" alt="星辰导航"/>
+      <img src="https://lchh2007.github.io/dh/assets/logo.png" alt="星辰导航"/>
     </a>
     <!-- 用于占位，保持平衡，无需实际内容 -->
   <div class="placeholder"></div>
@@ -58,9 +58,6 @@
       <a href="https://www.cxy521.com">程序员导航</a>
     </div>
     <div class ="item">
-      <a href="https://wht.im/">0x3.</a>
-    </div>
-    <div class ="item">
       <a href="https://www.moe48.com/">萌导航</a>
     </div>
     <div class ="item">
@@ -99,7 +96,10 @@
     <div class ="item">
       <a href="https://www.iyinghua.io/">樱花动漫</a>
     </div>
-   
+    <div class ="item">
+      <a href="https://www.agemys.org">AGE动漫</a>
+    </div>
+
     <div id="学习强国" class="tag"> 学习强国 </div> 
     <!-- 添加items -->
     <div class ="item">
@@ -120,19 +120,7 @@
     <div class ="item">
       <a href="https://www.xuexi.cn">学习强国</a>
     </div>
-    <div class ="item">
-      <a href="https://www.wyzxwk.com">乌有之乡</a>
-    </div>
-    <div class ="item">
-      <a href="http://www.maoflag.cc">毛泽东思想旗帜网</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.qstheory.cn/">求是网</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.hswh.org.cn">红色文化网</a>
-    </div>
-    <div class ="item">
+    <div class="item">
       <a href="https://www.ncpssd.cn">国家哲学社会科学文献中心</a>
     </div>
     <div class ="item">
@@ -215,6 +203,7 @@
         })
       } else {
         sidebar.style.width = '0';
+        sidebar.style.backdropFilter = 'none'; // 移除模糊效果
         active.forEach(function(active) {
         active.style.display = 'none';
         })
