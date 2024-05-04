@@ -4,140 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>网址导航</title>
-    <style>
-       body {
-    font-family: cursive;
-    background-color: #f9f9f9;
-    margin: 0px;
-}
-.sidebar {
-    width: 0px;
-    height: 100%;
-    background-color: #333;
-    position: fixed;
-    transition:margin-left 0.5s;
-    z-index: 1;
-}
-.sidebar a {
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-    display:block; 
-    border-bottom: 1px solid #444;
-    display: inline-block;
-    width: 170px;
-    text-align: center;
-    margin: 5px;
-    border-radius: 10px;
-}
-.sidebar a:hover {
-    background-color: #555;
-}
-.sidebar a:active {
-    background-color: #222;
-}
-
-.topbar {
-      width: 100%;
-      height: 50px;
-      background-color: #333333;
-      position: fixed;
-      top: 0;
-      z-index: 2;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;    
-}
-  .topbar img {
-  display: flex;
-  flex-grow: 1;
-  text-align: center;
-  height: 50px;
-  
-}
-.placeholder {
-  /* 占位符与菜单按钮宽度相同以保持平衡，可以设置为透明 */
-  visibility: hidden;
-  width: 50px;
-}
-
-.menu-btn {
-      display: flex;
-      width: 40px;
-      height: 40px;
-      margin: 5px;
-      border: none;
-      background-color: #333;
-      color: #fff;
-      font-size: 25px;
-      cursor: pointer;
-    }
-.content {
-  margin-left: 210px; 
-  padding: 10px; 
-  display:flex; 
-  flex-wrap : wrap; 
-  margin-top: 50px;
-}
-    /* 使用媒体查询，当屏幕宽度小于768px时，去掉主内容区域的左边距 */
-    @media screen and (max-width: 768px) {
-      .content {
-        margin-left: 0;
-      }
-    }      
-
-.tag{
-  width :100%; 
-  height :50px; 
-  background-color : #eee ;  
-  color:#333 ;  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  border-bottom: 1px solid #ccc;
-  border-radius: 10px;
-}
-
-.item{
-  width :31%; 
-  height :50px ;  
-  background-color : #eee ;  
-  margin: 1%;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: #333;
-  border: 1px solid #ccc
-}
-
-@media screen and (max-width: 648px) {
-      .item {
-        width :47%;
-        margin :1%;
-      } 
-    }
-
-.item:hover {
-  background-color: #fff;
-}
-
-.item:active {
-  background-color: #ddd;
-}
-a{text-decoration: none;}
-a{color: hwb(0 0% 100%);}
-    </style>
+    <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
 <!-- 顶部栏 -->
   <div class="topbar">
     <button class="menu-btn" onclick="toggleSidebar()">&#9776;</button>
     <a href="index.html">
-      <img src="logo.png" alt="星辰导航"/>
+      <img src="/assets/logo.png" alt="星辰导航"/>
     </a>
     <!-- 用于占位，保持平衡，无需实际内容 -->
   <div class="placeholder"></div>
