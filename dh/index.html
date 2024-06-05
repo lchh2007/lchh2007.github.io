@@ -188,27 +188,35 @@
     const mainContent = document.querySelector('.content');
     const menuButton = document.querySelector('.menu-btn');
 
-    //默认不显示tab模式菜单按钮
+// 设置默认样式
+sidebar.style.width = '0';
+sidebar.style.transition = 'width 0.5s ease';
+active.forEach(function(active) {
+  active.style.opacity = 0; // 添加初始透明度为 0
+  active.style.transition = 'opacity 0.5s ease'; // 添加过渡效果
+});
+mainContent.style.marginLeft = '0';
+
+// 汉堡菜单功能
+menuButton.addEventListener('click', () => {
+  if (sidebar.offsetWidth === 0) {
+    sidebar.style.width = '200px';
     active.forEach(function(active) {
-        active.style.display = 'none';
-        })
-    //默认content左侧无边距
-    mainContent.style.marginLeft = '0'
-    //汉堡菜单功能
-    menuButton.addEventListener('click', () => {
-      if (sidebar.offsetWidth === 0) {
-        sidebar.style.width = '200px';
-        active.forEach(function(active) {
-        active.style.display = 'block';
-        })
-      } else {
-        sidebar.style.width = '0';
-        sidebar.style.backdropFilter = 'none'; // 移除模糊效果
-        active.forEach(function(active) {
-        active.style.display = 'none';
-        })
-      }
+      active.style.display = 'block'; // 先显示 active 元素
+      setTimeout(() => {
+        active.style.opacity = 1; // 延迟设置透明度为 1
+      }, 100); // 设置延迟时间 (毫秒)
     });
+  } else {
+    active.forEach(function(active) {
+      active.style.opacity = 0; // 先设置透明度为 0
+      setTimeout(() => {
+        active.style.display = 'none'; // 延迟隐藏 active 元素
+      }, 100);
+    });
+    sidebar.style.width = '0';
+  }
+});
 </script>
 </body>
 </html>
