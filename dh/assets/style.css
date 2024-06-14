@@ -1,5 +1,10 @@
- body {
-    font-family: fangsong;
+@font-face {
+  font-family: "HYWenHei 85W";
+  src: url("https://lchh2007.github.io/assets/zh-cn.woff2");
+}
+ 
+body {
+    font-family: "HYWenHei 85W";
     background-color: #f9f9f9;
     margin: 0px;
 }
