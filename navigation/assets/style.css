@@ -1,10 +1,10 @@
 @font-face {
-  font-family: "HarmonyOS Sans";
+  font-family: "HarmonyOS Sans SC";
   src: url("https://www.mihoyo.com/_nuxt/fonts/HarmonyOS_Sans_SC_Regular.a5de96f.otf");
 }
  
 body {
-    font-family: "HarmonyOS Sans";
+    font-family: "HarmonyOS Sans SC";
     background-color: #f9f9f9;
     margin: 0px;
 }
