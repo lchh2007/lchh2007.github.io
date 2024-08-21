@@ -1,10 +1,10 @@
 @font-face {
-  font-family: "HYWenHei 85W";
-  src: url("https://cdn.jsdelivr.net/gh/lchh2007/lchh2007.github.io/assets/zh-cn.woff2");
+  font-family: "HarmonyOS Sans";
+  src: url("https://www.mihoyo.com/_nuxt/fonts/HarmonyOS_Sans_SC_Regular.a5de96f.otf");
 }
  
 body {
-    font-family: "HYWenHei 85W";
+    font-family: "HarmonyOS Sans";
     background-color: #f9f9f9;
     margin: 0px;
 }
