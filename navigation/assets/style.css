@@ -21,7 +21,6 @@ body {
   padding: 10px;
   text-decoration: none;
   display: block;
-  border-bottom: 1px solid #444;
   display: inline-block;
   width: 170px;
   text-align: center;
@@ -93,7 +92,6 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  border-bottom: 1px solid #ccc;
   border-radius: 10px;
 }
 
