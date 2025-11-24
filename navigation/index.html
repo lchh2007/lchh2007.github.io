@@ -1,231 +1,310 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link 
-      rel="icon" 
-      href="https://lchh2007.github.io/favicon.ico" 
-      type="image/x-icon"
-    />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>星辰导航</title>
-    <link rel="stylesheet" href="https://lchh2007.github.io/navigation/assets/style.css">
-</head>
-<body>
-<!-- 顶部栏 -->
-  <div class="topbar">
-    <button class="menu-btn" onclick="toggleSidebar()">&#9776;</button>
-    <a href="index.html">
-      <img src="https://lchh2007.github.io/navigation/assets/logo.png" alt="星辰导航"/>
-    </a>
-    <!-- 用于占位，保持平衡，无需实际内容 -->
-  <div class="placeholder"></div>
-  </div>
-<!-- 侧边栏 -->
-  <div class="sidebar">
-  </a>
-    <a class="active" href="#导航">导航</a>
-    <a class="active" href="#影视">影视</a>
-    <a class="active" href="#学习">学习</a>
-    <a class="active" href="#工具">工具</a>
-    <!-- 添加tabs -->
-  </div>
-  <div class="content">
-  
-    <div id="导航" class="tag"> 导航 </div> 
-  
-    <!-- 添加items -->
-    <div class ="item">
-      <a href="https://www.hao123.com">Hao123</a>
-    </div>
-    <div class ="item">
-      <a href="https://daohang.qq.com">腾讯导航</a>
-    </div>
-    <div class ="item">
-      <a href="https://hao.360.com/">360导航</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.adzhp.cn/">爱达杂货铺</a>
-    </div>
-    <div class ="item">
-      <a href="https://it-cxy.top/">我的书签</a>
-    </div>
-    <div class ="item">
-      <a href="https://hao.199it.com/">大数据导航</a>
-    </div>
-    <div class ="item">
-      <a href="https://gosbook.cn">够思导航</a>
-    </div>
-    <div class ="item">
-      <a href="https://nav.qinight.com">柒夜导航</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.cxy521.com">程序员导航</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.moe48.com/">萌导航</a>
-    </div>
-    <div class ="item">
-      <a href="https://moe321.com/">次元导航</a>
-    </div>
-    <div class ="item">
-      <a href="https://dyttw.com.cn/">电影导航</a>
-    </div>
-     
-    <div id="影视" class="tag"> 影视 </div> 
-    <!-- 添加items -->
-    <div class ="item">
-      <a href="https://555app.vip">555电影</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.apple120.com">青苹果影院</a>
-    </div>
-    <div class ="item">
-      <a href="https://klyingshi.com">可乐影视</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.pptv04.com">皮皮影视</a>
-    </div>
-    <div class ="item">
-      <a href="https://soupian.one">搜片</a>
-    </div>
-    <div class ="item">
-      <a href="https://dyxs.me">电影先生</a>
-    </div>
-    <div class ="item">
-      <a href="https://1029yy.com">1029影院</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.zzzfun.one">ZZZFun</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.iyinghua.io/">樱花动漫</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.agemys.org">AGE动漫</a>
+    <style>
+      /* 1. 字体优化：增加备用字体栈，防止缺少本地字体时显示宋体 */
+      @font-face {
+        font-family: "HarmonyOS Sans SC";
+        src: url("../assets/zh-cn.woff2");
+      }
+
+      :root {
+        --sidebar-width: 200px;
+        --topbar-height: 50px;
+        --primary-color: #333;
+        --bg-color: #f9f9f9;
+      }
+
+      html {
+        /* 让点击侧边栏跳转时平滑滚动 */
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--topbar-height);
+      }
+
+      body {
+        font-family: "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+        background-color: var(--bg-color);
+        margin: 0;
+        overflow-x: hidden; /* 防止侧边栏动画导致横向滚动条 */
+      }
+
+      /* --- 顶部栏 --- */
+      .topbar {
+        width: 100%;
+        height: var(--topbar-height);
+        background-color: var(--primary-color);
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .topbar img {
+        height: 30px; /* Logo高度调整，避免撑满 */
+        vertical-align: middle;
+      }
+
+      .menu-btn {
+        width: 50px;
+        height: 100%;
+        border: none;
+        background: transparent;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s;
+      }
+
+      .menu-btn:hover {
+        background-color: #444;
+      }
+
+      /* 占位块，保持Flex布局平衡 */
+      .placeholder {
+        width: 50px;
+      }
+
+      /* --- 侧边栏 --- */
+      .sidebar {
+        width: var(--sidebar-width);
+        height: 100%;
+        background-color: #2b2b2b;
+        position: fixed;
+        top: var(--topbar-height); /* 在顶部栏下方 */
+        left: calc(var(--sidebar-width) * -1); /* 默认隐藏在左侧屏幕外 */
+        transition: left 0.4s ease;
+        z-index: 90;
+        overflow-y: auto;
+        padding-top: 10px;
+      }
+
+      /* 侧边栏打开状态 */
+      body.nav-open .sidebar {
+        left: 0;
+      }
+
+      .sidebar a {
+        color: #ccc;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        margin: 5px 10px;
+        border-radius: 6px;
+        transition: all 0.3s;
+      }
+
+      .sidebar a:hover {
+        background-color: #444;
+        color: white;
+      }
+
+      /* --- 主要内容区域 --- */
+      .content {
+        margin-top: var(--topbar-height);
+        margin-left: 0;
+        padding: 20px;
+        transition: margin-left 0.4s ease;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 15px; /* 使用 gap 代替 margin 计算，布局更稳 */
+      }
+
+      /* PC端：侧边栏打开时，内容向右挤压 */
+      @media screen and (min-width: 769px) {
+        body.nav-open .content {
+          margin-left: var(--sidebar-width);
+        }
+      }
+
+      /* --- 分类标题与卡片 --- */
+      .tag {
+        width: 100%;
+        height: 40px;
+        background-color: transparent;
+        color: #333;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-left: 5px solid var(--primary-color);
+        padding-left: 10px;
+      }
+
+      .item {
+        /* 使用 flex-basis 和 flex-grow 实现自适应网格 */
+        flex: 1 0 calc(25% - 20px); 
+        max-width: calc(25% - 15px);
+        height: 60px;
+        background-color: #fff;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: #333;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      }
+      
+      /* 2. 修复链接颜色：确保卡片内的链接是深色，可读 */
+      .item a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #333; /* 修复：深色文字 */
+        font-weight: 500;
+      }
+
+      .item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-color: #ccc;
+        background-color: #fff;
+      }
+
+      /* --- 响应式适配 --- */
+      
+      /* 平板/小屏笔记本 */
+      @media screen and (max-width: 1024px) {
+        .item {
+          flex: 1 0 calc(33.33% - 15px);
+          max-width: calc(33.33% - 10px);
+        }
+      }
+
+      /* 手机端 */
+      @media screen and (max-width: 768px) {
+        .item {
+          flex: 1 0 calc(50% - 15px);
+          max-width: calc(50% - 8px);
+        }
+        
+        /* 手机端打开侧边栏时，增加遮罩层效果 (可选优化) */
+        body.nav-open .content {
+           /* 手机端不挤压内容，侧边栏直接覆盖 */
+           margin-left: 0;
+           opacity: 0.3; /* 让背景变暗提示侧边栏已打开 */
+           pointer-events: none; /* 防止点击底层 */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <button class="menu-btn" id="toggleBtn">&#9776;</button>
+      <a href="index.html" style="display: flex; align-items: center; height: 100%;">
+        <img src="./assets/logo.png" alt="星辰导航" />
+      </a>
+      <div class="placeholder"></div>
     </div>
 
-    <div id="学习" class="tag"> 学习</div> 
-    <!-- 添加items -->
-    <div class ="item">
-      <a href="https://basic.smartedu.cn">国家中小学智慧教育平台</a>
+    <div class="sidebar">
+      <a href="#导航">导航</a>
+      <a href="#影视">影视</a>
+      <a href="#学习">学习</a>
+      <a href="#工具">工具</a>
     </div>
-    <div class ="item">
-      <a href="https://open.163.com">网易公开课</a>
-    </div>
-    <div class ="item">
-      <a href="https://study.163.com">网易云课堂</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.icourse163.org">中国大学MOOC</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.gaokao.com">高考网</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.xuexi.cn">学习强国</a>
-    </div>
-    <div class="item">
-      <a href="https://www.ncpssd.cn">国家哲学社会科学文献中心</a>
-    </div>
-    <div class ="item">
-      <a href="https://xueshu.baidu.com">百度学术</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.cnki.net">中国知网</a>
-    </div>
-    <div class ="item">
-      <a href="https://lib.cqvip.com">维普期刊</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.nlc.cn">中国国家图书馆</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.nature.com">自然杂志</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.science.org">科学杂志</a>
-    </div>
-    <div class ="item">
-      <a href="https://pubscholar.cn">PubScholar公益学术平台</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.sci-hub.se">Sci-Hub</a>
-    </div>
-    <div class ="item">
-      <a href="https://scholar.google.com">谷歌学术</a>
-    </div>
-    <div id="工具" class="tag"> 工具 </div> 
-  
-    <!-- 添加items -->
-    <div class ="item">
-      <a href="https://github.com/MetaCubeX/ClashMetaForAndroid">Clash Meta For Android</a>
-    </div> 
-    <div class ="item">
-      <a href="https://github.com/2dust/clashN">ClashN</a>
-    </div>
-    <div class ="item">
-      <a href="https://github.com/2dust/v2rayNG">v2rayNG</a>
-    </div>
-    <div class ="item">
-      <a href="https://github.com/2dust/v2rayN">v2rayN</a>
-    </div>
-    <div class ="item">
-      <a href="https://xmsoushu.com">熊猫搜书</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.jiumodiary.com">鸠摩搜书</a>
-    </div>
-    <div class ="item">
-      <a href="https://www.similarsites.com">相似网站</a>
-    </div>
-    <div class ="item">
-      <a href="https://openyyy.com">云音乐格式转换</a>
-    </div>
-    <div class ="item">
-      <a href="https://g.savalone.com">谷歌镜像</a>
-    </div>
-    <!-- Repeat for other tags and items --> 
-  </div>  
-  </div>
-</div>
-<script>
-    // JavaScript 代码
-    const sidebar = document.querySelector('.sidebar');
-    const active = document.querySelectorAll('a.active');
-    const mainContent = document.querySelector('.content');
-    const menuButton = document.querySelector('.menu-btn');
 
-// 设置默认样式
-sidebar.style.width = '0';
-sidebar.style.transition = 'width 0.5s ease';
-active.forEach(function(active) {
-  active.style.opacity = 0; // 添加初始透明度为 0
-  active.style.transition = 'opacity 0.5s ease'; // 添加过渡效果
-});
-mainContent.style.marginLeft = '0';
+    <div class="content">
+      <div id="导航" class="tag">导航</div>
+      <div class="item"><a href="https://www.hao123.com">Hao123</a></div>
+      <div class="item"><a href="https://daohang.qq.com">腾讯导航</a></div>
+      <div class="item"><a href="https://hao.360.com/">360导航</a></div>
+      <div class="item"><a href="https://www.adzhp.cn/">爱达杂货铺</a></div>
+      <div class="item"><a href="https://it-cxy.top/">我的书签</a></div>
+      <div class="item"><a href="https://hao.199it.com/">大数据导航</a></div>
+      <div class="item"><a href="https://gosbook.cn">够思导航</a></div>
+      <div class="item"><a href="https://nav.qinight.com">柒夜导航</a></div>
+      <div class="item"><a href="https://www.cxy521.com">程序员导航</a></div>
+      <div class="item"><a href="https://www.moe48.com/">萌导航</a></div>
+      <div class="item"><a href="https://moe321.com/">次元导航</a></div>
+      <div class="item"><a href="https://dyttw.com.cn/">电影导航</a></div>
 
-// 汉堡菜单功能
-menuButton.addEventListener('click', () => {
-  if (sidebar.offsetWidth === 0) {
-    sidebar.style.width = '200px';
-    active.forEach(function(active) {
-      active.style.display = 'block'; // 先显示 active 元素
-      setTimeout(() => {
-        active.style.opacity = 1; // 延迟设置透明度为 1
-      }, 100); // 设置延迟时间 (毫秒)
-    });
-  } 
-  else {
-    active.forEach(function(active) {
-      active.style.opacity = 0; // 先设置透明度为 0
-      setTimeout(() => {
-        active.style.display = 'none'; // 延迟隐藏 active 元素
-      }, 100);
-    });
-    sidebar.style.width = '0';
-  }
-});
-</script>
-</body>
+      <div id="影视" class="tag">影视</div>
+      <div class="item"><a href="https://555app.vip">555电影</a></div>
+      <div class="item"><a href="https://www.apple120.com">青苹果影院</a></div>
+      <div class="item"><a href="https://klyingshi.com">可乐影视</a></div>
+      <div class="item"><a href="https://www.pptv04.com">皮皮影视</a></div>
+      <div class="item"><a href="https://soupian.one">搜片</a></div>
+      <div class="item"><a href="https://dyxs.me">电影先生</a></div>
+      <div class="item"><a href="https://1029yy.com">1029影院</a></div>
+      <div class="item"><a href="https://www.zzzfun.one">ZZZFun</a></div>
+      <div class="item"><a href="https://www.iyinghua.io/">樱花动漫</a></div>
+      <div class="item"><a href="https://www.agemys.org">AGE动漫</a></div>
+
+      <div id="学习" class="tag">学习</div>
+      <div class="item"><a href="https://basic.smartedu.cn">智慧教育平台</a></div>
+      <div class="item"><a href="https://open.163.com">网易公开课</a></div>
+      <div class="item"><a href="https://study.163.com">网易云课堂</a></div>
+      <div class="item"><a href="https://www.icourse163.org">中国大学MOOC</a></div>
+      <div class="item"><a href="https://www.gaokao.com">高考网</a></div>
+      <div class="item"><a href="https://www.xuexi.cn">学习强国</a></div>
+      <div class="item"><a href="https://www.ncpssd.cn">社科文献中心</a></div>
+      <div class="item"><a href="https://xueshu.baidu.com">百度学术</a></div>
+      <div class="item"><a href="https://www.cnki.net">中国知网</a></div>
+      <div class="item"><a href="https://lib.cqvip.com">维普期刊</a></div>
+      <div class="item"><a href="https://www.nlc.cn">国家图书馆</a></div>
+      <div class="item"><a href="https://www.nature.com">自然杂志</a></div>
+      <div class="item"><a href="https://www.science.org">科学杂志</a></div>
+      <div class="item"><a href="https://scholar.google.com">谷歌学术</a></div>
+
+      <div id="工具" class="tag">工具</div>
+      <div class="item"><a href="https://github.com/MetaCubeX/ClashMetaForAndroid">Clash Meta</a></div>
+      <div class="item"><a href="https://github.com/2dust/clashN">ClashN</a></div>
+      <div class="item"><a href="https://github.com/2dust/v2rayNG">v2rayNG</a></div>
+      <div class="item"><a href="https://github.com/2dust/v2rayN">v2rayN</a></div>
+      <div class="item"><a href="https://xmsoushu.com">熊猫搜书</a></div>
+      <div class="item"><a href="https://www.jiumodiary.com">鸠摩搜书</a></div>
+      <div class="item"><a href="https://www.similarsites.com">相似网站</a></div>
+      <div class="item"><a href="https://openyyy.com">云音乐转换</a></div>
+      <div class="item"><a href="https://g.savalone.com">谷歌镜像</a></div>
+    </div>
+
+    <script>
+      // 3. JavaScript 逻辑简化：通过切换 class 来控制状态
+      const toggleBtn = document.getElementById("toggleBtn");
+      const body = document.body;
+      const sidebarLinks = document.querySelectorAll('.sidebar a');
+
+      // 点击按钮切换侧边栏状态
+      toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // 防止冒泡
+        body.classList.toggle("nav-open");
+      });
+
+      // 点击侧边栏内的链接时，自动收起侧边栏（特别是手机端体验更好）
+      sidebarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            body.classList.remove("nav-open");
+          }
+        });
+      });
+
+      // 点击内容区域也可以关闭侧边栏（可选，增强体验）
+      document.querySelector('.content').addEventListener('click', () => {
+        if (window.innerWidth <= 768 && body.classList.contains("nav-open")) {
+          body.classList.remove("nav-open");
+        }
+      });
+    </script>
+  </body>
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="icon"
-      href="https://lchh2007.github.io/favicon.ico"
+      href="./favicon.ico"
       type="image/x-icon"
     />
     <title>星辰主页</title>
@@ -46,6 +46,7 @@
 
       .site-item {
         flex-basis: calc(100% - 10px); /* 设置每列的宽度，考虑到间隔 */
+		    display:block;
         margin-bottom: 10px;
         background-color: #fff;
         padding: 15px;
@@ -53,6 +54,7 @@
         border-radius: 8px;
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s ease;
+    		text-decoration: none;
       }
 
       .site-item:hover {
@@ -62,10 +64,11 @@
       a {
         text-decoration: none;
         color: #333;
+        display:block;
       }
 
       a:hover {
-        text-decoration: underline;
+        text-decoration: none;
       }
     </style>
   </head>
@@ -73,8 +76,7 @@
     <div id="navigation-container">
       <h1>星辰主页</h1>
       <ul id="site-list">
-        <li class="site-item"><a href="/Wallpaper/index.html">壁纸推荐</a></li>
-        <li class="site-item"><a href="/navigation/index.html">星辰导航</a></li>
+        <li class="site-item"><a href="./navigation/index.html">星辰导航</a></li>
         <!-- 于此添加更多项目 -->
       </ul>
     </div>
