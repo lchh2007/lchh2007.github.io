@@ -7,7 +7,7 @@
     <style>
       /* 1. 字体优化：增加备用字体栈，防止缺少本地字体时显示宋体 */
       @font-face {
-        font-family: "HarmonyOS Sans SC";
+        font-family: "HanYWenHei-85W";
         src: url("../assets/zh-cn.woff2");
       }
 
@@ -15,7 +15,7 @@
         --sidebar-width: 200px;
         --topbar-height: 50px;
         --primary-color: #333;
-        --bg-color: #f9f9f9;
+        --bg-color: #faf9f6;
       }
 
       html {
@@ -25,7 +25,7 @@
       }
 
       body {
-        font-family: "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+        font-family: "HanYWenHei-85W", "PingFang SC", "Microsoft YaHei", sans-serif;
         background-color: var(--bg-color);
         margin: 0;
         overflow-x: hidden; /* 防止侧边栏动画导致横向滚动条 */
@@ -131,7 +131,7 @@
       .tag {
         width: 100%;
         height: 40px;
-        background-color: transparent;
+        background-color: #faf9f6;
         color: #333;
         display: flex;
         align-items: center;
@@ -140,7 +140,7 @@
         margin-top: 20px;
         margin-bottom: 10px;
         border-left: 5px solid var(--primary-color);
-        padding-left: 10px;
+        padding-left: 30px;
       }
 
       .item {
