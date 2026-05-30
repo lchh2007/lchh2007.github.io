@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="星辰主页" />
+    <title>星辰主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+    <!-- Background layers -->
+    <div class="bg" aria-hidden="true"></div>
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+    <div class="blob blob-3" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="切换暗色模式" title="切换亮色 / 暗色模式">
+        <div class="toggle-icon-wrap" id="toggle-icon-wrap">
+            <svg class="toggle-icon icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"/>
+                <line x1="12" y1="2" x2="12" y2="5"/>
+                <line x1="12" y1="19" x2="12" y2="22"/>
+                <line x1="2" y1="12" x2="5" y2="12"/>
+                <line x1="19" y1="12" x2="22" y2="12"/>
+                <line x1="4.93" y1="4.93" x2="7.05" y2="7.05"/>
+                <line x1="16.95" y1="16.95" x2="19.07" y2="19.07"/>
+                <line x1="4.93" y1="19.07" x2="7.05" y2="16.95"/>
+                <line x1="16.95" y1="7.05" x2="19.07" y2="4.93"/>
+            </svg>
+            <svg class="toggle-icon icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+        </div>
+    </button>
+    <div id="theme-ripple" aria-hidden="true"></div>
+
+    <div class="page-wrapper">
+        <!-- ============================================================
+             SEARCH SECTION
+             ============================================================ -->
+        <main class="search-container" role="search" aria-label="聚合搜索">
+            <h1>星辰主页</h1>
+
+            <div class="search-wrapper">
+                <div class="search-box">
+                    <div class="glare" id="glare" aria-hidden="true"></div>
+
+                    <input type="text" id="search-input" placeholder="探索任何事物…" autocomplete="off" aria-label="搜索关键词" />
+
+                    <button id="search-btn" aria-label="搜索">
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg>
+                        <span>搜索</span>
+                    </button>
+                </div>
+
+                <ul id="suggestion-list" role="listbox" aria-label="搜索建议"></ul>
+            </div>
+
+            <div class="engine-tabs" role="tablist" aria-label="搜索引擎切换">
+                <button class="engine-tab active" data-value="https://www.baidu.com/s?wd=" role="tab" aria-selected="true" aria-label="百度"><svg viewBox="44 0 932 1130" class="tab-icon"><path d="M184.310244 539.583133c111.396518-23.899253 96.196993-156.995092 92.797099-186.094183-5.499828-44.898596-58.198181-123.296146-129.795943-117.09634C57.214216 244.492357 44.014629 374.688287 44.014629 374.688287c-12.099622 60.198118 29.199087 188.794098 140.295615 164.894846zM302.506549 770.975899c-3.299897 9.399706-10.499672 33.298959-4.299866 54.098309 12.399612 46.69854 52.998343 48.798475 52.998343 48.798475h58.298178V731.377137h-62.398049c-27.999125 8.399737-41.5987 30.299053-44.598606 39.598762z m88.397236-454.485792c61.598074 0 111.196524-70.797787 111.196524-158.295052C502.100309 70.797787 452.50186 0 390.903785 0c-61.398081 0-111.196524 70.797787-111.196524 158.195055 0 87.497265 49.798443 158.295052 111.196524 158.295052z m264.89172 10.399675c82.197431 10.699666 135.095777-77.09759 145.495452-143.595512C811.990622 116.996343 758.992279 39.798756 700.794098 26.599169c-58.298178-13.399581-131.095902 79.997499-137.695695 140.895595-7.899753 74.497671 10.599669 148.795349 92.697102 159.395018z m201.393704 390.787784S729.993186 619.280641 655.795505 512.983964c-100.596855-156.795099-243.592385-92.997093-291.390891-13.299584-47.598512 79.697509-121.796193 130.19593-132.295865 143.495514-10.699666 13.199587-153.595199 90.297177-121.896189 231.192773 31.699009 140.795599 143.195524 138.19568 143.195524 138.19568s82.097434 8.099747 177.394454-13.199587c95.297021-21.199337 177.294458 5.299834 177.294458 5.299834s222.593042 74.497671 283.491138-68.997843c60.798099-143.595511-34.398925-217.993186-34.398925-217.993185zM476.301116 931.270889H331.605639c-62.498046-12.499609-87.397268-55.098278-90.597168-62.39805-3.099903-7.399769-20.79935-41.698697-11.399644-99.996874 26.999156-87.397268 103.996749-93.697071 103.99675-93.697071h76.997593v-94.69704l65.597949 0.999969 0.099997 349.789066z m269.591573-0.999969H579.297896c-64.597981-16.599481-67.597887-62.498046-67.597887-62.498046V683.578631l67.597887-1.099965V847.973493c4.099872 17.59945 26.099184 20.899347 26.099184 20.899346H673.994936V683.578631h71.897753v246.692289z m235.692632-491.784627c0-31.799006-26.399175-127.596011-124.396112-127.596011-98.19693 0-111.296521 90.397174-111.29652 154.295176 0 60.998093 5.199837 146.19543 127.096027 143.395518 121.996186-2.599919 108.596605-138.095683 108.596605-170.094683z" fill="currentColor"/></svg></button>
+                <button class="engine-tab" data-value="https://www.google.com/search?q=" role="tab" aria-selected="false" aria-label="Google"><svg viewBox="100 70 820 840" class="tab-icon"><path d="M881 442.4H519.7v148.5h206.4c-8.9 48-35.9 88.6-76.6 115.8-34.4 23-78.3 36.6-129.9 36.6-99.9 0-184.4-67.5-214.6-158.2-7.6-23-12-47.6-12-72.9s4.4-49.9 12-72.9c30.3-90.6 114.8-158.1 214.7-158.1 56.3 0 106.8 19.4 146.6 57.4l110-110.1c-66.5-62-153.2-100-256.6-100-149.9 0-279.6 86-342.7 211.4-26 51.8-40.8 110.4-40.8 172.4S151 632.8 177 684.6C240.1 810 369.8 896 519.7 896c103.6 0 190.4-34.4 253.8-93 72.5-66.8 114.4-165.2 114.4-282.1 0-27.2-2.4-53.3-6.9-78.5z" fill="currentColor"/></svg></button>
+                <button class="engine-tab" data-value="https://www.bing.com/search?q=" role="tab" aria-selected="false" aria-label="必应"><svg viewBox="102 0 822 1030" class="tab-icon"><path d="M340.582 70.11L102.537 0.683V851.9L340.65 643.345V70.11zM102.537 851.763l238.045 171.623 580.881-340.924V411.785L102.537 851.83z" fill="currentColor"/><path d="M409.463 255.386l113.733 238.933 138.854 56.866 259.413-139.4-506.06-156.331z" fill="currentColor"/></svg></button>
+            </div>
+        </main>
+
+        <!-- ============================================================
+             NAVIGATION SECTION — 网址导航
+             ============================================================ -->
+        <section class="nav-section" aria-label="网址导航">
+            <!-- Category: 搜索引擎 -->
+            <div class="nav-category cat-search" data-category="搜索引擎">
+                <div class="nav-cat-title">
+                    <span class="nav-cat-dot" style="background:#4361ee"></span> 搜索引擎
+                    <span class="nav-cat-count"></span>
+                </div>
+                <div class="nav-grid">
+                    <a class="nav-card" href="https://www.google.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=www.google.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">G</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Google</div><div class="nav-card-url">google.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://duckduckgo.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=duckduckgo.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">鸭</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">DuckDuckGo</div><div class="nav-card-url">duckduckgo.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://www.bing.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=www.bing.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">必</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">必应 Bing</div><div class="nav-card-url">bing.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://yandex.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=yandex.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">Ya</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Yandex</div><div class="nav-card-url">yandex.com</div></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Category: AI 聊天助手 -->
+            <div class="nav-category cat-ai" data-category="AI助手">
+                <div class="nav-cat-title">
+                    <span class="nav-cat-dot" style="background:#7209b7"></span> AI 聊天助手
+                    <span class="nav-cat-count"></span>
+                </div>
+                <div class="nav-grid">
+                    <a class="nav-card" href="https://chatgpt.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">C</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">ChatGPT</div><div class="nav-card-url">chatgpt.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://claude.ai/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">C</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Claude</div><div class="nav-card-url">claude.ai</div></div>
+                    </a>
+                    <a class="nav-card" href="https://www.deepseek.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=www.deepseek.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">D</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">DeepSeek</div><div class="nav-card-url">deepseek.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://grok.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=grok.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">G</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Grok</div><div class="nav-card-url">grok.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://gemini.google.com/app" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">G</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Google Gemini</div><div class="nav-card-url">gemini.google.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://anuneko.com/#/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=anuneko.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">A</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">AnuNeko AI</div><div class="nav-card-url">anuneko.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://aihubmix.com/?lang=zh-CN" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=aihubmix.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">推</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">推理时代</div><div class="nav-card-url">aihubmix.com</div></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Category: 开发与技术 -->
+            <div class="nav-category cat-dev" data-category="开发技术">
+                <div class="nav-cat-title">
+                    <span class="nav-cat-dot" style="background:#f72585"></span> 开发与技术
+                    <span class="nav-cat-count"></span>
+                </div>
+                <div class="nav-grid">
+                    <a class="nav-card" href="https://github.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">G</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">GitHub</div><div class="nav-card-url">github.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://csdiy.wiki/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=csdiy.wiki&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">CS</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">CS自学指南</div><div class="nav-card-url">csdiy.wiki</div></div>
+                    </a>
+                    <a class="nav-card" href="https://msdn.itellyou.cn/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=msdn.itellyou.cn&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">M</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">MSDN我告诉你</div><div class="nav-card-url">msdn.itellyou.cn</div></div>
+                    </a>
+                    <a class="nav-card" href="https://huggingface.co/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">🤗</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Hugging Face</div><div class="nav-card-url">huggingface.co</div></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Category: 学术与电子书 -->
+            <div class="nav-category cat-academic" data-category="学术电子书">
+                <div class="nav-cat-title">
+                    <span class="nav-cat-dot" style="background:#4cc9f0"></span> 学术与电子书
+                    <span class="nav-cat-count"></span>
+                </div>
+                <div class="nav-grid">
+                    <a class="nav-card" href="https://www.wikipedia.org/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=www.wikipedia.org&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">W</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Wikipedia</div><div class="nav-card-url">wikipedia.org</div></div>
+                    </a>
+                    <a class="nav-card" href="https://scholar.google.com" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=scholar.google.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">S</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Google Scholar</div><div class="nav-card-url">scholar.google.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://sci-hub.ru" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=sci-hub.ru&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">S</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Sci-Hub</div><div class="nav-card-url">sci-hub.ru</div></div>
+                    </a>
+                    <a class="nav-card" href="https://z-library.sk/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=z-library.sk&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">Z</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Z-library</div><div class="nav-card-url">z-library.sk</div></div>
+                    </a>
+                    <a class="nav-card" href="https://annas-archive.gl/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=annas-archive.gl&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">A</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Anna's Archive</div><div class="nav-card-url">annas-archive.gl</div></div>
+                    </a>
+                    <a class="nav-card" href="https://www.jiumodiary.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=www.jiumodiary.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">鸠</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">鸠摩搜索</div><div class="nav-card-url">jiumodiary.com</div></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Category: 动漫与影视 -->
+            <div class="nav-category cat-anime" data-category="动漫影视">
+                <div class="nav-cat-title">
+                    <span class="nav-cat-dot" style="background:#06d6a0"></span> 动漫与影视
+                    <span class="nav-cat-count"></span>
+                </div>
+                <div class="nav-grid">
+                    <a class="nav-card" href="http://age.tv/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=age.tv&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">A</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">AGE动漫</div><div class="nav-card-url">age.tv</div></div>
+                    </a>
+                    <a class="nav-card" href="http://www.7sefun.top/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=www.7sefun.top&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">七</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">七色番动漫</div><div class="nav-card-url">7sefun.top</div></div>
+                    </a>
+                    <a class="nav-card" href="https://dm84.vip/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=dm84.vip&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">动</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">动漫巴士</div><div class="nav-card-url">dm84.vip</div></div>
+                    </a>
+                    <a class="nav-card" href="https://bangumi.tv/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=bangumi.tv&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">B</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Bangumi 番组计划</div><div class="nav-card-url">bangumi.tv</div></div>
+                    </a>
+                    <a class="nav-card" href="https://555app.vip/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=555app.vip&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">5</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">555电影</div><div class="nav-card-url">555app.vip</div></div>
+                    </a>
+                    <a class="nav-card" href="https://mzh.moegirl.org.cn/Mainpage" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=mzh.moegirl.org.cn&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">萌</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">萌娘百科</div><div class="nav-card-url">mzh.moegirl.org.cn</div></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Category: 实用工具 -->
+            <div class="nav-category cat-tools" data-category="实用工具">
+                <div class="nav-cat-title">
+                    <span class="nav-cat-dot" style="background:#f77f00"></span> 实用工具
+                    <span class="nav-cat-count"></span>
+                </div>
+                <div class="nav-grid">
+                    <a class="nav-card" href="https://www.apkmirror.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=www.apkmirror.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">A</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">APKMirror</div><div class="nav-card-url">apkmirror.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://www.speedtest.net/zh-Hans" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=www.speedtest.net&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">S</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">SPEEDTEST</div><div class="nav-card-url">speedtest.net</div></div>
+                    </a>
+                    <a class="nav-card" href="https://openyyy.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=openyyy.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">转</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">NCM转MP3</div><div class="nav-card-url">openyyy.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://upyunso.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=upyunso.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">U</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">UP云搜</div><div class="nav-card-url">upyunso.com</div></div>
+                    </a>
+                    <a class="nav-card" href="http://xmsoushu.com/#/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=xmsoushu.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">熊</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">熊猫搜书</div><div class="nav-card-url">xmsoushu.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://haowallpaper.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=haowallpaper.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">壁</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">哲风壁纸</div><div class="nav-card-url">haowallpaper.com</div></div>
+                    </a>
+                    <a class="nav-card" href="https://www.similarsites.com/" target="_blank" rel="noopener">
+                        <div class="nav-card-icon"><img src="https://www.google.com/s2/favicons?domain=www.similarsites.com&sz=64" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback">S</span></div>
+                        <div class="nav-card-info"><div class="nav-card-name">Similarsites.com</div><div class="nav-card-url">similarsites.com</div></div>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
