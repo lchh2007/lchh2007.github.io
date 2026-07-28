@@ -778,6 +778,7 @@ transition: transform 0.35s var(--transition-ease);
 .cat-dev .nav-card::before { background: #f72585; }
 .cat-academic .nav-card::before { background: #4cc9f0; }
 .cat-anime .nav-card::before { background: #06d6a0; }
+.cat-cloud .nav-card::before { background: #3a86ff; }
 .cat-tools .nav-card::before { background: #f77f00; }
 
 /* ─── Card Icon ─── */
